@@ -109,6 +109,9 @@ Autonomous_SRE_Agent/
 │   ├── golden_incidents.json        # 20 benchmark incident scenarios
 │   ├── evaluate_rag.py              # Evaluates Hit Rate@k, MRR, and latency
 │   └── evaluate_trajectory.py       # Evaluates tool selection accuracy & citation count
+├── tests/                           # 17 Pytest unit & integration tests
+├── api/
+│   └── main.py                      # FastAPI microservice with SSE streaming & semantic caching
 └── ui/
     └── streamlit_app.py             # Incident War-Room UI with HITL card
 ```
@@ -161,10 +164,14 @@ python eval/evaluate_rag.py
 python eval/evaluate_trajectory.py
 ```
 
-### 5. Launch Incident War-Room UI
+### 5. Launch Incident War-Room UI or FastAPI Microservice
 
 ```bash
+# Launch Streamlit Incident War-Room
 streamlit run ui/streamlit_app.py
+
+# Launch FastAPI SSE Production Microservice
+uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 ---
