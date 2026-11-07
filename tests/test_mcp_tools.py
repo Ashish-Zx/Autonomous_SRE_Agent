@@ -41,3 +41,4 @@ def test_remediation_tool_execution():
     )
     assert res["status"] == "SUCCESS"
     assert res["max_connections"] == 120
+

@@ -62,3 +62,4 @@ def test_wrap_xml_telemetry_escapes_nested_tags():
     assert "<service_logs>" in wrapped
     assert "</service_logs>" in wrapped
     assert "&lt;/service_logs&gt;" in wrapped
+

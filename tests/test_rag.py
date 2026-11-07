@@ -49,3 +49,4 @@ def test_crag_grader_marks_correct():
     assert grade["is_relevant"] is True
     assert grade["grade"] == "CORRECT"
     assert grade["web_fallback_used"] is False
+

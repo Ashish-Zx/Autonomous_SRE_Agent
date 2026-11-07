@@ -28,3 +28,4 @@ EXPOSE 8501 8000
 
 # Default command launches Streamlit War-Room
 CMD ["streamlit", "run", "ui/streamlit_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+

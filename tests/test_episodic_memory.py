@@ -31,3 +31,4 @@ def test_episodic_memory_write_and_recall():
         rec = results[0]
         assert rec["incident_id"] == "INC-UNIT-TEST"
         assert rec["remediation_tool"] == "rollback_service_deployment"
+
