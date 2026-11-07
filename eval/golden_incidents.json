@@ -1,0 +1,182 @@
+[
+  {
+    "test_id": "TC-01",
+    "service_name": "order-service",
+    "error_code": "ERR_DB_POOL_9045",
+    "query": "HikariPool connection timeout ERR_DB_POOL_9045 order-service",
+    "ground_truth_runbook_id": "RB-PG-9045",
+    "expected_remediation_tool": "update_connection_pool_limit",
+    "category": "database"
+  },
+  {
+    "test_id": "TC-02",
+    "service_name": "billing-service",
+    "error_code": "ERR_DB_POOL_9045",
+    "query": "FATAL remaining connection slots are reserved for non-replication superuser connections billing-service",
+    "ground_truth_runbook_id": "RB-PG-9045",
+    "expected_remediation_tool": "update_connection_pool_limit",
+    "category": "database"
+  },
+  {
+    "test_id": "TC-03",
+    "service_name": "inventory-service",
+    "error_code": "ERR_DB_POOL_9045",
+    "query": "Postgres connection pool exhausted after deployment commit inventory-service",
+    "ground_truth_runbook_id": "RB-PG-9045",
+    "expected_remediation_tool": "rollback_service_deployment",
+    "category": "database"
+  },
+  {
+    "test_id": "TC-04",
+    "service_name": "payment-worker",
+    "error_code": "ERR_OOM_KILLED_137",
+    "query": "Container payment-worker terminated ExitCode 137 OOMKilled memory limit exceeded",
+    "ground_truth_runbook_id": "RB-OOM-137",
+    "expected_remediation_tool": "rollback_service_deployment",
+    "category": "memory"
+  },
+  {
+    "test_id": "TC-05",
+    "service_name": "notification-service",
+    "error_code": "ERR_OOM_KILLED_137",
+    "query": "Pod restartCount climbing sawtooth memory usage OOMKilled notification-service",
+    "ground_truth_runbook_id": "RB-OOM-137",
+    "expected_remediation_tool": "scale_service_replicas",
+    "category": "memory"
+  },
+  {
+    "test_id": "TC-06",
+    "service_name": "analytics-worker",
+    "error_code": "ERR_OOM_KILLED_137",
+    "query": "Worker SIGKILL out of memory unbounded transaction cache analytics-worker",
+    "ground_truth_runbook_id": "RB-OOM-137",
+    "expected_remediation_tool": "rollback_service_deployment",
+    "category": "memory"
+  },
+  {
+    "test_id": "TC-07",
+    "service_name": "catalog-service",
+    "error_code": "ERR_CACHE_STAMPEDE_502",
+    "query": "HTTP 502 Bad Gateway upstream prematurely closed connection catalog:pricing flash_deal",
+    "ground_truth_runbook_id": "RB-REDIS-502",
+    "expected_remediation_tool": "flush_and_warm_cache",
+    "category": "cache"
+  },
+  {
+    "test_id": "TC-08",
+    "service_name": "checkout-api",
+    "error_code": "ERR_CACHE_STAMPEDE_502",
+    "query": "Redis keyspace hits zero thundering herd cache stampede checkout-api",
+    "ground_truth_runbook_id": "RB-REDIS-502",
+    "expected_remediation_tool": "flush_and_warm_cache",
+    "category": "cache"
+  },
+  {
+    "test_id": "TC-09",
+    "service_name": "pricing-service",
+    "error_code": "ERR_CACHE_STAMPEDE_502",
+    "query": "Cache TTL expired simultaneously without jitter causing DB overload pricing-service",
+    "ground_truth_runbook_id": "RB-REDIS-502",
+    "expected_remediation_tool": "flush_and_warm_cache",
+    "category": "cache"
+  },
+  {
+    "test_id": "TC-10",
+    "service_name": "api-gateway",
+    "error_code": "ERR_TLS_HANDSHAKE_409",
+    "query": "SSL_do_handshake failed certificate verify failed certificate has expired api-gateway",
+    "ground_truth_runbook_id": "RB-TLS-409",
+    "expected_remediation_tool": "renew_tls_certificate",
+    "category": "tls"
+  },
+  {
+    "test_id": "TC-11",
+    "service_name": "auth-service",
+    "error_code": "ERR_TLS_HANDSHAKE_409",
+    "query": "NET ERR_CERT_DATE_INVALID ingress TLS cert renewal failed auth-service",
+    "ground_truth_runbook_id": "RB-TLS-409",
+    "expected_remediation_tool": "renew_tls_certificate",
+    "category": "tls"
+  },
+  {
+    "test_id": "TC-12",
+    "service_name": "webhook-ingress",
+    "error_code": "ERR_TLS_HANDSHAKE_409",
+    "query": "TLS handshake failure rate 100% cert-manager secret sync webhook-ingress",
+    "ground_truth_runbook_id": "RB-TLS-409",
+    "expected_remediation_tool": "renew_tls_certificate",
+    "category": "tls"
+  },
+  {
+    "test_id": "TC-13",
+    "service_name": "user-profile-service",
+    "error_code": "ERR_SQL_N_PLUS_ONE_8812",
+    "query": "p99 latency degraded from 120ms to 4800ms 1200 queries executed per request user-profile-service",
+    "ground_truth_runbook_id": "RB-SQL-8812",
+    "expected_remediation_tool": "rollback_service_deployment",
+    "category": "latency"
+  },
+  {
+    "test_id": "TC-14",
+    "service_name": "search-api",
+    "error_code": "ERR_SQL_N_PLUS_ONE_8812",
+    "query": "Lazy loading loop without join fetch SQL N+1 query regression search-api",
+    "ground_truth_runbook_id": "RB-SQL-8812",
+    "expected_remediation_tool": "rollback_service_deployment",
+    "category": "latency"
+  },
+  {
+    "test_id": "TC-15",
+    "service_name": "order-service",
+    "error_code": "ERR_SQL_N_PLUS_ONE_8812",
+    "query": "Missing index on foreign key high read IOPS slow query log order-service",
+    "ground_truth_runbook_id": "RB-SQL-8812",
+    "expected_remediation_tool": "rollback_service_deployment",
+    "category": "latency"
+  },
+  {
+    "test_id": "TC-16",
+    "service_name": "event-processor",
+    "error_code": "ERR_KAFKA_REBALANCE_STORM",
+    "query": "CommitFailedException consumer group rebalance storm consumer lag spike event-processor",
+    "ground_truth_runbook_id": "RB-KAFKA-7721",
+    "expected_remediation_tool": "scale_service_replicas",
+    "category": "messaging"
+  },
+  {
+    "test_id": "TC-17",
+    "service_name": "analytics-worker",
+    "error_code": "ERR_KAFKA_REBALANCE_STORM",
+    "query": "Kafka heartbeat failure max.poll.interval.ms exceeded rebalance storm analytics-worker",
+    "ground_truth_runbook_id": "RB-KAFKA-7721",
+    "expected_remediation_tool": "scale_service_replicas",
+    "category": "messaging"
+  },
+  {
+    "test_id": "TC-18",
+    "service_name": "file-upload-service",
+    "error_code": "ERR_NO_SPACE_LEFT_ENOSPC",
+    "query": "OSError [Errno 28] No space left on device pod evicted DiskPressure file-upload-service",
+    "ground_truth_runbook_id": "RB-DISK-9910",
+    "expected_remediation_tool": "cleanup_ephemeral_storage",
+    "category": "storage"
+  },
+  {
+    "test_id": "TC-19",
+    "service_name": "transcoder-service",
+    "error_code": "ERR_NO_SPACE_LEFT_ENOSPC",
+    "query": "Scratch disk space exhausted unrotated debug logs transcoder-service",
+    "ground_truth_runbook_id": "RB-DISK-9910",
+    "expected_remediation_tool": "cleanup_ephemeral_storage",
+    "category": "storage"
+  },
+  {
+    "test_id": "TC-20",
+    "service_name": "auth-gateway",
+    "error_code": "ERR_RATE_LIMIT_STORM_429",
+    "query": "HTTP 429 Too Many Requests TokenBucketExhausted missing X-Forwarded-For auth-gateway",
+    "ground_truth_runbook_id": "RB-RATELIMIT-429",
+    "expected_remediation_tool": "reset_rate_limit_counters",
+    "category": "ratelimit"
+  }
+]

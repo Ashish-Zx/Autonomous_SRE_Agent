@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Secrets and local configurations
+.env
+.DS_Store
+
+# Databases / local generated files
+*.db
+*.sqlite3
+data/*.db
+data/*.sqlite3
+
+# LangSmith / Agent cache
+.langchain/
+.pytest_cache/
+.coverage
+htmlcov/
