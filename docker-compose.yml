@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  sentinelsre-warroom:
+    build: .
+    container_name: sentinelsre_warroom
+    ports:
+      - "8501:8501"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - TAVILY_API_KEY=${TAVILY_API_KEY}
+      - LANGSMITH_TRACING=${LANGSMITH_TRACING:-false}
+      - LANGSMITH_API_KEY=${LANGSMITH_API_KEY}
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

@@ -8,3 +8,4 @@
 **Lessons Learned:**
 - Never commit hardcoded connection pool reductions without load testing.
 - Added alert `ERR_DB_POOL_9045` with automated runbook RB-PG-9045.
+

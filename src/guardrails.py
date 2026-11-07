@@ -86,3 +86,4 @@ def wrap_xml_telemetry(tag: str, content: str) -> str:
     # Clean closing tags to avoid injection breaking out of XML scope
     clean_content = content.replace(f"</{tag}>", f"&lt;/{tag}&gt;")
     return f"<{tag}>\n{clean_content}\n</{tag}>"
+

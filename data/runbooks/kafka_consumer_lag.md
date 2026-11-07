@@ -56,3 +56,4 @@
 ### Post-Remediation Verification
 - Confirm `consumer_lag_records` steadily decreases to < 500 records.
 - Confirm consumer group state transitions to `Stable`.
+

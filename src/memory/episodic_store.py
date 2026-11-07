@@ -101,3 +101,4 @@ class EpisodicIncidentStore:
         rows = cursor.fetchall()
         conn.close()
         return [dict(row) for row in rows]
+

@@ -43,3 +43,4 @@ class CrossEncoderReranker:
         # Sort descending by cross-encoder score
         reranked = sorted(candidates, key=lambda x: x["cross_encoder_score"], reverse=True)
         return reranked[:top_k]
+

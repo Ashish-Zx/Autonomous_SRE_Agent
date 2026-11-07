@@ -77,3 +77,4 @@ class MCPToolRegistry:
             StructuredTool.from_function(func=renew_tls_certificate, name="renew_tls_certificate", description="Renew TLS certificate secrets"),
             StructuredTool.from_function(func=reset_rate_limit_counters, name="reset_rate_limit_counters", description="Reset rate limit counters"),
         ]
+

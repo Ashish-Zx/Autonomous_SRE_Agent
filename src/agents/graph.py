@@ -162,3 +162,4 @@ def resume_with_human_approval(thread_id: str, approved: bool) -> Dict[str, Any]
 
     resumed_state = sre_agent_app.get_state(config)
     return resumed_state.values
+
