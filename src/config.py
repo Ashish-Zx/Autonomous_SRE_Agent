@@ -83,7 +83,7 @@ class LLMRouter:
             try:
                 from langchain_google_genai import ChatGoogleGenerativeAI
                 return ChatGoogleGenerativeAI(
-                    model="gemini-2.0-flash",
+                    model="gemini-2.5-flash",
                     temperature=temperature,
                     google_api_key=google_key,
                     max_retries=2,

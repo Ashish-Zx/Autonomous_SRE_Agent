@@ -56,3 +56,4 @@ def test_triage_and_approval_workflow():
         assert approve_resp.status_code == 200
         approve_data = approve_resp.json()
         assert approve_data["status"] == "RESOLVED"
+
